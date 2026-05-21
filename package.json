@@ -1,0 +1,52 @@
+{
+  "name": "quantum-safe-storage",
+  "version": "1.0.0",
+  "description": "The world's first Quantum-Resistant encrypted localStorage & sessionStorage for the web. Uses Lattice-based cryptography (CRYSTALS-Kyber inspired) to future-proof your data against quantum computers.",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts --minify --clean",
+    "dev": "tsup src/index.ts --format cjs,esm --watch --dts",
+    "test": "vitest run"
+  },
+  "keywords": [
+    "quantum",
+    "post-quantum",
+    "encryption",
+    "storage",
+    "localStorage",
+    "sessionStorage",
+    "security",
+    "lattice",
+    "kyber",
+    "future-proof",
+    "quantum-resistant",
+    "quantum-safe",
+    "cryptography"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "crypto-js": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/crypto-js": "^4.2.2",
+    "@types/node": "^22.0.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.0.0",
+    "vitest": "^1.0.0"
+  }
+}
