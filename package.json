@@ -48,5 +48,13 @@
     "tsup": "^8.0.0",
     "typescript": "^5.0.0",
     "vitest": "^1.0.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Coderkube-App/quantum-safe-storage.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Coderkube-App/quantum-safe-storage/issues"
+  },
+  "homepage": "https://github.com/Coderkube-App/quantum-safe-storage#readme"
 }
