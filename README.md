@@ -2,6 +2,10 @@
 
 **The world's first Quantum-Resistant encrypted localStorage & sessionStorage for the web.**
 
+<p align="center">
+  <img src="./assets/cli_demo.svg" alt="Quantum-Safe Storage Demo" width="100%" style="max-width: 860px;" />
+</p>
+
 While traditional encryption (like AES alone) can theoretically be broken by future quantum computers using Shor's and Grover's algorithms, `quantum-safe-storage` adds a **Lattice-Based Key Derivation** layer inspired by **CRYSTALS-Kyber** (the NIST-selected post-quantum standard) to make your stored data resistant to both classical AND quantum attacks.
 
 ## 🛡️ Three Layers of Protection

@@ -1,0 +1,231 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 520" width="860" height="520">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&amp;family=Inter:wght@400;600;700&amp;display=swap');
+      .fm{font-family:'Fira Code',monospace}.fs{font-family:'Inter',sans-serif}
+      
+      /* Concentric Ring Rotations */
+      @keyframes rotateCW { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+      @keyframes rotateCCW { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
+      .rcw { animation: rotateCW 14s linear infinite; }
+      .rccw { animation: rotateCCW 18s linear infinite; }
+      .rcw-fast { animation: rotateCW 10s linear infinite; }
+
+      /* Safe Pulsing Lattice Nodes (Modulating radius and opacity to prevent transform bugs) */
+      @keyframes pulseNode {
+        0%, 100% { r: 4.5; fill-opacity: 0.6; }
+        50% { r: 6.5; fill-opacity: 1; }
+      }
+      .n1 { animation: pulseNode 3s ease-in-out infinite; }
+      .n2 { animation: pulseNode 3s ease-in-out infinite 0.8s; }
+      .n3 { animation: pulseNode 3s ease-in-out infinite 1.6s; }
+
+      /* Flow dashoffset animations for bitstream channels */
+      @keyframes flow { to { stroke-dashoffset: -20px; } }
+      .flow-stream { stroke-dasharray: 6,4; animation: flow 1.2s linear infinite; }
+
+      /* Typewriter commands */
+      @keyframes type1 { 0%, 5% { width: 0; } 18%, 100% { width: 235px; } }
+      @keyframes type2 { 0%, 42% { width: 0; } 60%, 100% { width: 230px; } }
+      .cmd1 { animation: type1 10s linear infinite; }
+      .cmd2 { animation: type2 10s linear infinite; }
+
+      /* Blinkers */
+      @keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+      .cursor-blink { animation: blink 1s step-end infinite; }
+      
+      @keyframes cursor1Move {
+        0%, 5% { transform: translateX(0); opacity: 1; }
+        18% { transform: translateX(230px); opacity: 1; }
+        22%, 100% { transform: translateX(230px); opacity: 0; }
+      }
+      @keyframes cursor2Move {
+        0%, 42% { transform: translateX(0); opacity: 0; }
+        43% { transform: translateX(0); opacity: 1; }
+        60% { transform: translateX(225px); opacity: 1; }
+        65%, 100% { transform: translateX(225px); opacity: 0; }
+      }
+      .cur1 { animation: cursor1Move 10s linear infinite, blink 1s step-end infinite; }
+      .cur2 { animation: cursor2Move 10s linear infinite, blink 1s step-end infinite; }
+
+      /* Sequential Visibility Timelines for logs */
+      @keyframes showL1 { 0%, 21.9% { opacity: 0; } 22%, 100% { opacity: 1; } }
+      @keyframes showL2 { 0%, 41.9% { opacity: 0; } 42%, 100% { opacity: 1; } }
+      @keyframes showL3 { 0%, 64.9% { opacity: 0; } 65%, 100% { opacity: 1; } }
+      @keyframes showL4 { 0%, 74.9% { opacity: 0; } 75%, 100% { opacity: 1; } }
+      @keyframes showL5 { 0%, 84.9% { opacity: 0; } 85%, 100% { opacity: 1; } }
+      .log1 { animation: showL1 10s step-end infinite; }
+      .log2 { animation: showL2 10s step-end infinite; }
+      .log3 { animation: showL3 10s step-end infinite; }
+      .log4 { animation: showL4 10s step-end infinite; }
+      .log5 { animation: showL5 10s step-end infinite; }
+
+      /* Success badge pulsing green glow */
+      @keyframes pulseGlow {
+        0%, 100% { filter: drop-shadow(0 0 2px rgba(16,185,129,0.3)); }
+        50% { filter: drop-shadow(0 0 8px rgba(16,185,129,0.8)); }
+      }
+      .success-glow { animation: pulseGlow 2s ease-in-out infinite; }
+    </style>
+
+    <!-- Filters &amp; Shadows -->
+    <filter id="ds"><feDropShadow dx="0" dy="6" stdDeviation="15" flood-color="#000" flood-opacity=".6"/></filter>
+    <filter id="led-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <!-- Gradients -->
+    <radialGradient id="g-purple" cx="15%" cy="30%" r="55%">
+      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.14" />
+      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="g-emerald" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#10b981" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="g-cyan" cx="85%" cy="30%" r="55%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.14" />
+      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Typewriter Clip Paths -->
+    <clipPath id="clip-c1"><rect class="cmd1" x="20" y="8" width="0" height="20" /></clipPath>
+    <clipPath id="clip-c2"><rect class="cmd2" x="20" y="112" width="0" height="20" /></clipPath>
+  </defs>
+
+  <!-- Deep dark canvas background -->
+  <rect fill="#04050a" width="860" height="520" rx="16" />
+  <rect fill="url(#g-purple)" width="860" height="520" rx="16" />
+  <rect fill="url(#g-emerald)" width="860" height="520" rx="16" />
+  <rect fill="url(#g-cyan)" width="860" height="520" rx="16" />
+
+  <!-- Top bar header -->
+  <text class="fs" x="430" y="30" fill="#a78bfa" font-size="10" font-weight="700" text-anchor="middle" letter-spacing="3" opacity="0.6">POST-QUANTUM CRYPTOGRAPHIC ENGINE</text>
+
+  <!-- ════════════ COLUMN 1: PLAINTEXT PANEL ════════════ -->
+  <g transform="translate(30, 60)" filter="url(#ds)">
+    <rect width="230" height="240" rx="12" fill="#0d1117" stroke="rgba(124, 92, 246, 0.2)" stroke-width="1.5" />
+    <rect width="230" height="24" rx="12" fill="#161b22" />
+    <rect y="16" width="230" height="8" fill="#161b22" />
+    <text class="fs" x="115" y="15" fill="#8b949e" font-size="9" font-weight="600" text-anchor="middle">Plaintext Payload</text>
+    
+    <g transform="translate(16, 44)">
+      <text class="fm" font-size="10.5" fill="#a5b4fc" font-weight="700">vault.setItem(key, payload)</text>
+      <!-- JSON representation -->
+      <g transform="translate(0, 24)">
+        <text class="fm" font-size="10" fill="#71717a">{</text>
+        <text class="fm" y="16" font-size="10" fill="#bbb">  "auth_token": <tspan fill="#f59e0b">"xyz123"</tspan>,</text>
+        <text class="fm" y="32" font-size="10" fill="#bbb">  "expiry_date": <tspan fill="#f59e0b">"2026-12-31"</tspan>,</text>
+        <text class="fm" y="48" font-size="10" fill="#bbb">  "access_level": <tspan fill="#fbbf24">"admin"</tspan></text>
+        <text class="fm" y="64" font-size="10" fill="#71717a">}</text>
+      </g>
+      <text class="fs" y="148" fill="#52525b" font-size="8.5" font-weight="600" letter-spacing="0.5">UNSECURED LOCAL STORAGE RAW DATA</text>
+    </g>
+  </g>
+
+  <!-- ════════════ FLOW CHANNEL 1 ════════════ -->
+  <path class="flow-stream" d="M260,180 Q300,180 340,180" fill="none" stroke="#8b5cf6" stroke-width="2" opacity="0.6" />
+  <polygon points="340,176 348,180 340,184" fill="#8b5cf6" opacity="0.7" />
+
+  <!-- ════════════ CENTER: LATTICE CORE ENGINE ════════════ -->
+  <!-- Centered locally around (0,0) and translated to (430, 180) to make rotations 100% robust -->
+  <g transform="translate(430, 180)">
+    <!-- Connecting isometric paths -->
+    <path d="M0,-60 L50,-30 L0,0 M0,-60 L-50,-30 L0,0 M50,-30 L50,30 L0,60 M-50,-30 L-50,30 L0,60 M0,0 L50,30 M0,0 L-50,30 M0,60 L0,0 M-50,30 L0,60 M50,30 L0,60" fill="none" stroke="rgba(16, 185, 129, 0.25)" stroke-width="1.5" />
+
+    <!-- concentric security rings -->
+    <g class="rcw">
+      <circle r="78" fill="none" stroke="#8b5cf6" stroke-width="1" stroke-dasharray="4,8" opacity="0.7" />
+    </g>
+    <g class="rccw">
+      <circle r="92" fill="none" stroke="#06b6d4" stroke-width="1.2" stroke-dasharray="8,6" opacity="0.7" />
+    </g>
+    <g class="rcw-fast">
+      <circle r="106" fill="none" stroke="#10b981" stroke-width="1" stroke-dasharray="12,4" opacity="0.7" />
+    </g>
+
+    <!-- Lattice Nodes with pulse animations -->
+    <circle class="n1" cx="0" cy="-60" r="5" fill="#10b981" filter="url(#led-glow)" />
+    <circle class="n2" cx="50" cy="-30" r="5" fill="#10b981" filter="url(#led-glow)" />
+    <circle class="n3" cx="-50" cy="-30" r="5" fill="#10b981" filter="url(#led-glow)" />
+    <circle class="n1" cx="0" cy="0" r="6" fill="#6ee7b7" filter="url(#led-glow)" />
+    <circle class="n2" cx="50" cy="30" r="5" fill="#10b981" filter="url(#led-glow)" />
+    <circle class="n3" cx="-50" cy="30" r="5" fill="#10b981" filter="url(#led-glow)" />
+    <circle class="n1" cx="0" cy="60" r="5" fill="#10b981" filter="url(#led-glow)" />
+
+    <!-- Dynamic matrix center label -->
+    <rect x="-35" y="-10" width="70" height="20" rx="4" fill="rgba(4, 5, 10, 0.85)" stroke="rgba(16, 185, 129, 0.4)" stroke-width="1" />
+    <text class="fs" x="0" y="3" fill="#6ee7b7" font-size="8" font-weight="700" text-anchor="middle" letter-spacing="0.5">KYBER-KDF</text>
+  </g>
+
+  <!-- ════════════ FLOW CHANNEL 2 ════════════ -->
+  <path class="flow-stream" d="M520,180 Q560,180 600,180" fill="none" stroke="#06b6d4" stroke-width="2" opacity="0.6" style="animation-delay: 0.6s;" />
+  <polygon points="600,176 608,180 600,184" fill="#06b6d4" opacity="0.7" />
+
+  <!-- ════════════ COLUMN 3: CIPHERED OUTPUT PANEL ════════════ -->
+  <g transform="translate(600, 60)" filter="url(#ds)">
+    <rect width="230" height="240" rx="12" fill="#0d1117" stroke="rgba(6, 182, 212, 0.2)" stroke-width="1.5" />
+    <rect width="230" height="24" rx="12" fill="#161b22" />
+    <rect y="16" width="230" height="8" fill="#161b22" />
+    <text class="fs" x="115" y="15" fill="#8b949e" font-size="9" font-weight="600" text-anchor="middle">Encrypted Storage String</text>
+    
+    <g transform="translate(16, 44)">
+      <text class="fm" font-size="10.5" fill="#22d3ee" font-weight="700">localStorage.getItem(key)</text>
+      <!-- Cyphertext representation -->
+      <g transform="translate(0, 24)">
+        <text class="fm" font-size="10" fill="#71717a">"qss:v1:aes-256-gcm:</text>
+        <text class="fm" y="16" font-size="10" fill="#06b6d4">eyJhZXMiOiJxbXNzOCIsIm</text>
+        <text class="fm" y="32" font-size="10" fill="#06b6d4">t5YmVyIjoicTUtOTkwIiw</text>
+        <text class="fm" y="48" font-size="10" fill="#06b6d4">iaG1hYyI6IjM4Y2U5MGFm</text>
+        <text class="fm" y="64" font-size="10" fill="#06b6d4">ZDIxOCIsInRlbXAiOjU4</text>
+        <text class="fm" y="80" font-size="10" fill="#71717a">MDlkOTFhN2ZlMDU0In0="</text>
+      </g>
+      <text class="fs" y="148" fill="#52525b" font-size="8.5" font-weight="600" letter-spacing="0.5">SECURE SHOR/GROVER RESISTANT</text>
+    </g>
+  </g>
+
+  <!-- ════════════ BOTTOM PANEL: LIVE DEVELOPER TERMINAL ════════════ -->
+  <g transform="translate(30, 310)" filter="url(#ds)">
+    <rect width="800" height="186" rx="10" fill="rgba(13, 17, 23, 0.9)" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" />
+    
+    <!-- Titlebar -->
+    <rect width="800" height="24" rx="10" fill="#161b22" />
+    <rect y="16" width="800" height="8" fill="#161b22" />
+    <circle cx="16" cy="12" r="4" fill="#ff5f56" /><circle cx="28" cy="12" r="4" fill="#ffbd2e" /><circle cx="40" cy="12" r="4" fill="#27c93f" />
+    <text class="fs" x="400" y="16" fill="#8b949e" font-size="9" font-weight="600" text-anchor="middle">developer-console — quantum-safe-storage</text>
+    <line x1="0" y1="24" x2="800" y2="24" stroke="rgba(255,255,255,0.05)" stroke-width="1" />
+
+    <!-- Terminal Output -->
+    <g transform="translate(20, 32)">
+      <!-- Line 1: npm install command -->
+      <text class="fm" y="4" font-size="10.5" fill="#58a6ff" font-weight="700">❯</text>
+      <text class="fm" x="16" y="4" font-size="10.5" fill="#c9d1d9" clip-path="url(#clip-c1)">npm install quantum-safe-storage</text>
+      <rect class="cur1" x="16" y="-6" width="7" height="13" fill="#58a6ff" />
+
+      <!-- Success log after installation -->
+      <g class="log1">
+        <text class="fm" x="16" y="26" fill="#57ab5a">✔ Installed quantum-safe-storage@1.0.0 (Zero-Dependencies, Expo &amp; SSR-Safe)</text>
+      </g>
+
+      <!-- Line 2: executing vault script -->
+      <g class="log2">
+        <text class="fm" y="48" font-size="10.5" fill="#58a6ff" font-weight="700">❯</text>
+        <text class="fm" x="16" y="48" font-size="10.5" fill="#c9d1d9" clip-path="url(#clip-c2)">node test-quantum-vault.js</text>
+        <rect class="cur2" x="16" y="37" width="7" height="13" fill="#58a6ff" />
+      </g>
+
+      <!-- Execution logs -->
+      <g class="log3" transform="translate(16, 72)">
+        <text class="fm" fill="#8b949e">[Kyber-KDF] Derived 512-bit safe key (Rounds: 4)... <tspan fill="#34d399">Done (0.12ms)</tspan></text>
+      </g>
+      <g class="log4" transform="translate(16, 96)">
+        <text class="fm" fill="#8b949e">[AES-256] Encrypted payload &amp; HMAC tag generated... <tspan fill="#34d399">Done</tspan></text>
+      </g>
+      <g class="log5" transform="translate(16, 120)">
+        <text class="fm" fill="#8b949e">
+          <tspan fill="#10b981" font-weight="700">[SUCCESS]</tspan> vault.getItem('auth_token') decrypted &amp; verified.
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>
