@@ -1,6 +1,6 @@
 {
   "name": "quantum-safe-storage",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "The world's first Quantum-Resistant encrypted localStorage & sessionStorage for the web. Uses Lattice-based cryptography (CRYSTALS-Kyber inspired) to future-proof your data against quantum computers.",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",

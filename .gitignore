@@ -123,7 +123,6 @@ dist
 .tern-port
 
 # Stores VSCode versions used for testing VSCode extensions
-.vscode-test
 
 # pnpm
 .pnpm-store
@@ -185,3 +184,7 @@ public/
 # Demos (ignore all except TestKeyboardBare)
 demos/*
 !demos/TestKeyboardBare/
+branch_structure.json
+temp_auto_push.bat
+temp_interactive_push.bat
+.gitignore
